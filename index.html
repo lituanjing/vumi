@@ -26,11 +26,30 @@
     }
   </style>
 
-  <style></style>
+  <style>
+  .separate {
+    padding: 10px;
+  }
+  </style>
 </head>
 <body>
 
 <div id="app">
+  <ym-button-group>
+    <ym-button icon="left">上一页</ym-button>
+    <ym-button icon="right" icon-position="right">下一页</ym-button>
+  </ym-button-group>
+
+  <p  class="separate"></p>
+
+  <ym-button-group>
+    <ym-button icon="left">上一页</ym-button>
+    <ym-button>更多</ym-button>
+    <ym-button icon="right" icon-position="right">下一页</ym-button>
+  </ym-button-group>
+
+  <p  class="separate"></p>
+
   <ym-button :loading="loading1" @click="toggleStatus('loading1')">
     余米
   </ym-button>
