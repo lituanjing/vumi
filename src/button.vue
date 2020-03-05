@@ -1,7 +1,10 @@
 <template>
-  <button class="ym-button" :class="{ [`ym-icon-${iconPosition}`]: true }">
-    <ym-icon class="ym-button-icon-loading" name="loading"></ym-icon>
-    <ym-icon v-if="icon" :name="icon"> </ym-icon>
+  <button
+    :class="{ [`ym-icon-${iconPosition}`]: true }"
+    @click="$emit('click')"
+    class="ym-button">
+    <ym-icon v-if="loading" class="ym-button-icon-loading" name="loading"></ym-icon>
+    <ym-icon v-if="icon && !loading" :name="icon"> </ym-icon>
     <div class="ym-button-content">
       <slot></slot>
     </div>
@@ -13,6 +16,10 @@ export default {
   name: "YmButton",
   props: {
     icon: {},
+    loading: {
+      type: Boolean,
+      default: false
+    },
     iconPosition: {
       type: String,
       default: 'left',
