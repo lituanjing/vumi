@@ -6,7 +6,15 @@
 
 <script>
 export default {
-  name: "YmButtonGroup"
+  name: "YmButtonGroup",
+  mounted() {
+    for (let node of this.$el.children) {
+      const name = node.nodeName.toLowerCase()
+      if (name !== 'button') {
+        console.warn(`g-button-group 的直接子元素必须是 ym-button, 但你写的是 ${name}`)
+      }
+    }
+  }
 }
 </script>
 
