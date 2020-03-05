@@ -1,5 +1,6 @@
 <template>
   <button class="ym-button" :class="{ [`ym-icon-${iconPosition}`]: true }">
+    <ym-icon class="ym-button-icon-loading" name="loading"></ym-icon>
     <ym-icon v-if="icon" :name="icon"> </ym-icon>
     <div class="ym-button-content">
       <slot></slot>
@@ -24,6 +25,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@keyframes spin {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
 .ym-button {
   font-size: var(--font-size);
   height: var(--button-height);
@@ -67,6 +72,10 @@ export default {
       margin-right: 0;
       margin-left: .1em;
     }
+  }
+
+  &-icon-loading {
+    animation: spin .8s linear infinite;
   }
 }
 </style>
