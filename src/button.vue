@@ -12,7 +12,16 @@
 <script>
 export default {
   name: "YmButton",
-  props: ['icon', 'iconPosition']
+  props: {
+    icon: {},
+    iconPosition: {
+      type: String,
+      default: 'left',
+      validator (val) {
+        return val === 'left' || val === 'right'
+      }
+    }
+  }
 }
 </script>
 
