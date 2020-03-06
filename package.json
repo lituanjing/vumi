@@ -2,8 +2,9 @@
   "name": "yumi",
   "version": "0.0.1",
   "description": "余米-一个基于 Vue.js 2.0 的 UI 组件库",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "parcel build index.js --no-cache --no-minify",
     "dev-test": "parcel watch test/* --no-cache & karma start",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run"
   },
