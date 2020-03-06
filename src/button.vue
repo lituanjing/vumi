@@ -12,8 +12,12 @@
 </template>
 
 <script>
+import YmIcon from './icon'
 export default {
   name: "YmButton",
+  components: {
+    YmIcon
+  },
   props: {
     icon: {},
     loading: {
