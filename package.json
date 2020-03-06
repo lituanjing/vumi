@@ -1,5 +1,5 @@
 {
-  "name": "yumi",
+  "name": "vumi",
   "version": "0.0.1",
   "description": "余米-一个基于 Vue.js 2.0 的 UI 组件库",
   "main": "dist/index.js",
