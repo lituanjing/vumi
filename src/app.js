@@ -19,6 +19,10 @@ new Vue({
   methods: {
     toggleStatus (attr) {
       this[attr] = !this[attr]
+    },
+    inputChange (e) {
+      console.log('e')
+      console.log(e)
     }
   }
 })

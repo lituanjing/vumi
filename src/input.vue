@@ -3,6 +3,10 @@
     <input :value="value"
            :disabled="disabled"
            :readonly="readonly"
+           @change="$emit('change', $event.target.value)"
+           @input="$emit('input', $event.target.value)"
+           @focus="$emit('focus', $event.target.value)"
+           @blur="$emit('blur', $event.target.value)"
            type="text"
            class="ym-input">
     <template v-if="error">
@@ -13,11 +17,11 @@
 </template>
 
 <script>
-import YMIcon from './icon'
+import YmIcon from './icon'
 export default {
   name: "YmInput",
   components: {
-    YMIcon
+    YmIcon
   },
   props: {
     value: {
