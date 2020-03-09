@@ -36,7 +36,8 @@
 
 <div id="app">
   <div class="box">
-    <ym-input value="张三" @change="inputChange"></ym-input>
+    {{ str }}
+    <ym-input v-model="str" @change="inputChange"></ym-input>
     <ym-input value="张三" disabled></ym-input>
     <ym-input value="张三" readonly></ym-input>
   </div>
