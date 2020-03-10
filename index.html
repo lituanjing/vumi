@@ -32,48 +32,108 @@
   }
   </style>
 
+  <style>
+  .col-inner {
+    background-color: lightsteelblue;
+    height: 100%;
+  }
+  </style>
+
 </head>
 <body>
 
 <div id="app">
-  <ym-row>
-    <ym-col span="12"></ym-col>
-    <ym-col span="12"></ym-col>
+  <ym-row gutter="20">
+    <ym-col>
+      <div class="col-inner">1</div>
+    </ym-col>
+    <ym-col>
+      <div class="col-inner">2</div>
+    </ym-col>
   </ym-row>
 
-  <ym-row>
-    <ym-col></ym-col>
-    <ym-col></ym-col>
-    <ym-col></ym-col>
+  <ym-row gutter="20">
+    <ym-col>
+      <div class="col-inner">1</div>
+    </ym-col>
+    <ym-col>
+      <div class="col-inner">2</div>
+    </ym-col>
+    <ym-col>
+      <div class="col-inner">3</div>
+    </ym-col>
   </ym-row>
 
-  <ym-row>
-    <ym-col></ym-col>
-    <ym-col></ym-col>
-    <ym-col></ym-col>
-    <ym-col></ym-col>
+  <ym-row gutter="20">
+    <ym-col>
+      <div class="col-inner">1</div>
+    </ym-col>
+    <ym-col>
+      <div class="col-inner">2</div>
+    </ym-col>
+    <ym-col>
+      <div class="col-inner">3</div>
+    </ym-col>
+    <ym-col>
+      <div class="col-inner">4</div>
+    </ym-col>
   </ym-row>
 
-  <ym-row>
-    <ym-col span="2"></ym-col>
-    <ym-col span="22"></ym-col>
+  <ym-row gutter="20">
+    <ym-col span="4">
+      <div class="col-inner">1</div>
+    </ym-col>
+    <ym-col span="20">
+      <div class="col-inner">2</div>
+    </ym-col>
   </ym-row>
 
-  <div class="box">
-    {{ str }}
-    <ym-input v-model="str" @change="inputChange"></ym-input>
-    <ym-input value="张三" disabled></ym-input>
-    <ym-input value="张三" readonly></ym-input>
-  </div>
-  <div class="box">
-    <ym-input value="错没错" error="你错了"></ym-input>
-    <ym-input></ym-input>
-  </div>
+  <ym-row gutter="20">
+    <ym-col span="2">
+      <div class="col-inner">1</div>
+    </ym-col>
+    <ym-col span="20" offset="2">
+      <div class="col-inner">2</div>
+    </ym-col>
+  </ym-row>
+
+  <ym-row gutter="20">
+    <ym-col span="4">
+      <div class="col-inner">1</div>
+    </ym-col>
+    <ym-col span="18" offset="2">
+      <div class="col-inner">2</div>
+    </ym-col>
+  </ym-row>
+
+  <ym-row gutter="20">
+    <ym-col span="3">
+      <div class="col-inner">1</div>
+    </ym-col>
+    <ym-col span="6" offset="4">
+      <div class="col-inner">2</div>
+    </ym-col>
+    <ym-col span="7" offset="4">
+      <div class="col-inner">2</div>
+    </ym-col>
+  </ym-row>
+
+  <ym-row gutter="20">
+    <ym-col span="4">
+      <div class="col-inner">1</div>
+    </ym-col>
+    <ym-col span="4" offset="6">
+      <div class="col-inner">2</div>
+    </ym-col>
+    <ym-col span="8" offset="2">
+      <div class="col-inner">3</div>
+    </ym-col>
+  </ym-row>
+
 
   <div id="test"></div>
 </div>
 
 <script src="./src/app.js"></script>
-<script src="//at.alicdn.com/t/font_1672116_ged9wshhebl.js"></script>
 </body>
 </html>
