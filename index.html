@@ -40,10 +40,55 @@
   }
   </style>
 
+  <style>
+  .demo-box {
+    min-height: 77px;
+    background: grey;
+    border: 1px solid lightsteelblue;
+  }
+  .logo-wrapper {
+    padding: 10px;
+  }
+  </style>
+
 </head>
 <body>
 
 <div id="app">
+  <ym-row class="topbar">
+    <ym-col class="demo-box" span="9">
+      <ym-row align="left">
+        <ym-col>1</ym-col>
+        <ym-col>2</ym-col>
+        <ym-col>3</ym-col>
+        <ym-col>4</ym-col>
+      </ym-row>
+    </ym-col>
+    <ym-col class="demo-box" span="15">
+      <ym-row align="right">
+        <ym-col>1</ym-col>
+        <ym-col>2</ym-col>
+        <ym-col>3</ym-col>
+        <ym-col>4</ym-col>
+        <ym-col>5</ym-col>
+        <ym-col>6</ym-col>
+        <ym-col>7</ym-col>
+      </ym-row>
+    </ym-col>
+  </ym-row>
+
+  <ym-row class="logo-add-search-and-qrcode">
+    <ym-col class="demo-box" span="4">
+      <div class="logo-wrapper">
+        <img class="logo"
+          src="//img.alicdn.com/tfs/TB1_uT8a5ERMeJjSspiXXbZLFXa-143-59.png" alt="">
+      </div>
+    </ym-col>
+    <ym-col class="demo-box" span="14"></ym-col>
+    <ym-col class="demo-box" span="6"></ym-col>
+  </ym-row>
+
+  <div style="margin-top: 1000px;"></div>
   <ym-row gutter="20">
     <ym-col>
       <div class="col-inner">1</div>

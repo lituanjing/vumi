@@ -40,10 +40,6 @@ export default {
 
 <style lang="scss" scoped>
 .ym-col {
-  height: 60px;
-  width: 50%;
-  /*border: 1px solid gray;*/
-
   $class-prefix: ym-col-;
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
