@@ -1,7 +1,7 @@
 <template>
   <div
-    :class="[span && `ym-col-${span}`, offset && `ym-col-offset-${offset}`]"
-    :style="{ paddingLeft: gutter / 2 + 'px', paddingRight: gutter / 2 + 'px' }"
+    :class="colClasses"
+    :style="colStyle"
     class="ym-col">
     <slot></slot>
   </div>
@@ -22,6 +22,18 @@ export default {
     return {
       gutter: 0
     }
+  },
+  computed: {
+    colClasses () {
+      const { span, offset } = this
+      return [span && `ym-col-${span}`, offset && `ym-col-offset-${offset}`]
+    },
+    colStyle () {
+      return {
+        paddingLeft: this.gutter / 2 + 'px',
+        paddingRight: this.gutter / 2 + 'px'
+      }
+    }
   }
 }
 </script>
@@ -29,8 +41,8 @@ export default {
 <style lang="scss" scoped>
 .ym-col {
   height: 60px;
-  border: 1px solid gray;
   width: 50%;
+  /*border: 1px solid gray;*/
 
   $class-prefix: ym-col-;
   @for $n from 1 through 24 {
