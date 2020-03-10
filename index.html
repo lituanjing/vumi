@@ -31,10 +31,34 @@
     margin: 20px 0;
   }
   </style>
+
 </head>
 <body>
 
 <div id="app">
+  <ym-row>
+    <ym-col span="12"></ym-col>
+    <ym-col span="12"></ym-col>
+  </ym-row>
+
+  <ym-row>
+    <ym-col></ym-col>
+    <ym-col></ym-col>
+    <ym-col></ym-col>
+  </ym-row>
+
+  <ym-row>
+    <ym-col></ym-col>
+    <ym-col></ym-col>
+    <ym-col></ym-col>
+    <ym-col></ym-col>
+  </ym-row>
+
+  <ym-row>
+    <ym-col span="2"></ym-col>
+    <ym-col span="22"></ym-col>
+  </ym-row>
+
   <div class="box">
     {{ str }}
     <ym-input v-model="str" @change="inputChange"></ym-input>
