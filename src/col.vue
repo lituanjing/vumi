@@ -39,15 +39,14 @@ export default {
   },
   computed: {
     colClasses () {
-      const { span, offset, phone, ipad, narrowPc, pc } = this
+      const { span, offset, phone, ipad, narrowPc, pc, createClasses } = this
 
       return [
-        span && `ym-col-${span}`,
-        offset && `ym-col-offset-${offset}`,
-        ...(phone ? [ `ym-col-phone-${phone.span}`, `ym-col-phone-offset-${phone.offset}`, ] : []),
-        ...(ipad ? [ `ym-col-ipad-${ipad.span}`, `ym-col-ipad-offset-${ipad.offset}`, ]: []),
-        ...(narrowPc ? [ `ym-col-narrow-pc-${narrowPc.span}`, `ym-col-narrow-pc-offset-${narrowPc.offset}`, ]: []),
-        ...(pc ? [ `ym-col-pc-${pc.span}`, `ym-col-pc-offset-${pc.offset}`, ]: []),
+        ...createClasses({ span, offset }),
+        ...createClasses(phone, 'phone-'),
+        ...createClasses(ipad, 'ipad-'),
+        ...createClasses(narrowPc, 'narrow-pc-'),
+        ...createClasses(pc, 'pc-'),
       ]
     },
     colStyle () {
@@ -55,6 +54,15 @@ export default {
         paddingLeft: this.gutter / 2 + 'px',
         paddingRight: this.gutter / 2 + 'px'
       }
+    }
+  },
+  methods: {
+    createClasses (obj, str = '') {
+      if (!obj) return []
+      return [
+        obj.span && `ym-col-${str}${obj.span}`,
+        obj.offset && `ym-col-${str}offset-${obj.offset}`,
+      ]
     }
   }
 }
@@ -92,7 +100,7 @@ export default {
     }
   }
 
-  @media (min-width: 577px) and (max-width: 768px) {
+  @media (min-width: 577px) {
     $class-prefix: ym-col-ipad-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -108,7 +116,7 @@ export default {
     }
   }
 
-  @media (min-width: 769px) and (max-width: 992px) {
+  @media (min-width: 769px) {
     $class-prefix: ym-col-narrow-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -125,7 +133,7 @@ export default {
   }
 
 
-  @media (min-width: 993px) and (max-width: 1200px) {
+  @media (min-width: 993px) {
     $class-prefix: ym-col-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
