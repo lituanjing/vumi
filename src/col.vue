@@ -8,6 +8,16 @@
 </template>
 
 <script>
+let validator = (value) => {
+  let keys = Object.keys(value)
+  let valid = true
+  keys.forEach(key => {
+    if (!['span', 'offset'].includes(key)) {
+      valid = false
+    }
+  })
+  return valid
+}
 export default {
   name: "YmCol",
   props: {
@@ -17,6 +27,10 @@ export default {
     offset: {
       type: [Number, String],
     },
+    phone: { type: Object, validator, },
+    ipad: { type: Object, validator, },
+    narrowPc: { type: Object, validator, },
+    pc: { type: Object, validator, },
   },
   data () {
     return {
@@ -25,8 +39,16 @@ export default {
   },
   computed: {
     colClasses () {
-      const { span, offset } = this
-      return [span && `ym-col-${span}`, offset && `ym-col-offset-${offset}`]
+      const { span, offset, phone, ipad, narrowPc, pc } = this
+
+      return [
+        span && `ym-col-${span}`,
+        offset && `ym-col-offset-${offset}`,
+        ...(phone ? [ `ym-col-phone-${phone.span}`, `ym-col-phone-offset-${phone.offset}`, ] : []),
+        ...(ipad ? [ `ym-col-ipad-${ipad.span}`, `ym-col-ipad-offset-${ipad.offset}`, ]: []),
+        ...(narrowPc ? [ `ym-col-narrow-pc-${narrowPc.span}`, `ym-col-narrow-pc-offset-${narrowPc.offset}`, ]: []),
+        ...(pc ? [ `ym-col-pc-${pc.span}`, `ym-col-pc-offset-${pc.offset}`, ]: []),
+      ]
     },
     colStyle () {
       return {
@@ -51,6 +73,71 @@ export default {
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
       margin-left: ($n / 24) * 100%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    $class-prefix: ym-col-phone-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+
+    $class-prefix: ym-col-phone-offset-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n / 24) * 100%;
+      }
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 768px) {
+    $class-prefix: ym-col-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+
+    $class-prefix: ym-col-ipad-offset-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n / 24) * 100%;
+      }
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 992px) {
+    $class-prefix: ym-col-narrow-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+
+    $class-prefix: ym-col-narrow-pc-offset-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n / 24) * 100%;
+      }
+    }
+  }
+
+
+  @media (min-width: 993px) and (max-width: 1200px) {
+    $class-prefix: ym-col-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+
+    $class-prefix: ym-col-pc-offset-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n / 24) * 100%;
+      }
     }
   }
 }
