@@ -1,5 +1,6 @@
 <template>
   <div class="ym-content">
+    <slot></slot>
   </div>
 </template>
 
@@ -9,6 +10,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.ym-content {
+  flex-grow: 1;
+}
 </style>
