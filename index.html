@@ -36,47 +36,32 @@
     height: 20px;
     background-color: steelblue;
   }
+  .sider {
+    background: #333;
+    width: 200px;
+  }
+  .header {
+    background: #999;
+    height: 100px;
+  }
+  .footer {
+    background: #ccc;
+    height: 50px;
+  }
   </style>
 </head>
 <body>
 
 <div id="app">
-
   <ym-layout class="demo-layout">
-    <ym-sider class="demo">sider</ym-sider>
+    <ym-sider class="sider">sider</ym-sider>
     <ym-layout>
-      <ym-header class="demo">header</ym-header>
-      <ym-content class="demo">content</ym-content>
-      <ym-footer>footer</ym-footer>
+      <ym-header class="header">header</ym-header>
+      <ym-content>content</ym-content>
+      <ym-footer class="footer">footer</ym-footer>
     </ym-layout>
   </ym-layout>
 
-  <div class="separate"></div>
-
-  <ym-layout class="demo-layout">
-    <ym-header class="demo">header</ym-header>
-    <ym-content class="demo">content</ym-content>
-    <ym-footer class="demo">footer</ym-footer>
-  </ym-layout>
-
-
-<!--  <ym-layout>-->
-<!--    <ym-header></ym-header>-->
-<!--    <ym-layout>-->
-<!--      <ym-content></ym-content>-->
-<!--      <ym-sider></ym-sider>-->
-<!--    </ym-layout>-->
-<!--    <ym-footer></ym-footer>-->
-<!--  </ym-layout>-->
-
-<!--  <ym-layout>-->
-<!--    <ym-sider></ym-sider>-->
-<!--    <ym-layout>-->
-<!--      <ym-header></ym-header>-->
-<!--      <ym-content></ym-content>-->
-<!--      <ym-footer></ym-footer>-->
-<!--    </ym-layout>-->
-<!--  </ym-layout>-->
 </div>
 
 <script src="./src/app.js"></script>

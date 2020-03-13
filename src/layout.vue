@@ -35,6 +35,5 @@ export default {
   &.hasSider {
     flex-direction: row;
   }
-  border: 1px solid red;
 }
 </style>
