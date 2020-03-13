@@ -25,173 +25,42 @@
       font-size: var(--font-size);
     }
   </style>
-
-  <style>
-  .box {
-    margin: 20px 0;
-  }
-  </style>
-
-  <style>
-  .col-inner {
-    background-color: lightsteelblue;
-    border: 1px solid gray;
-    height: 100%;
-  }
-  </style>
-
-  <style>
-  .demo-box {
-    min-height: 77px;
-    background: grey;
-    border: 1px solid lightsteelblue;
-  }
-  .logo-wrapper {
-    padding: 10px;
-  }
-  </style>
-
 </head>
 <body>
 
 <div id="app">
-  <ym-row>
-    <ym-col span="2"
-            :phone="{ span: 24 }"
-            :narrow-pc="{ span: 8 }"
-            :pc="{ span: 6 }"
-            class="demo-box"></ym-col>
-    <ym-col span="22"
-            :phone="{ span: 24 }"
-            :narrow-pc="{ span: 16 }"
-            :pc="{ span: 18 }"
-            class="demo-box"></ym-col>
-  </ym-row>
+  <ym-layout>
+    <ym-header></ym-header>
+    <ym-content></ym-content>
+    <ym-footer></ym-footer>
+  </ym-layout>
 
-  <div style="margin-top: 1000px;"></div>
-  <ym-row class="topbar">
-    <ym-col class="demo-box" span="9">
-      <ym-row align="left">
-        <ym-col>1</ym-col>
-        <ym-col>2</ym-col>
-        <ym-col>3</ym-col>
-        <ym-col>4</ym-col>
-      </ym-row>
-    </ym-col>
-    <ym-col class="demo-box" span="15">
-      <ym-row align="right">
-        <ym-col>1</ym-col>
-        <ym-col>2</ym-col>
-        <ym-col>3</ym-col>
-        <ym-col>4</ym-col>
-        <ym-col>5</ym-col>
-        <ym-col>6</ym-col>
-        <ym-col>7</ym-col>
-      </ym-row>
-    </ym-col>
-  </ym-row>
+  <ym-layout>
+    <ym-header></ym-header>
+    <ym-layout>
+      <ym-sider></ym-sider>
+      <ym-content></ym-content>
+    </ym-layout>
+    <ym-footer></ym-footer>
+  </ym-layout>
 
-  <ym-row class="logo-add-search-and-qrcode">
-    <ym-col class="demo-box" span="4">
-      <div class="logo-wrapper">
-        <img class="logo"
-          src="//img.alicdn.com/tfs/TB1_uT8a5ERMeJjSspiXXbZLFXa-143-59.png" alt="">
-      </div>
-    </ym-col>
-    <ym-col class="demo-box" span="14"></ym-col>
-    <ym-col class="demo-box" span="6"></ym-col>
-  </ym-row>
+  <ym-layout>
+    <ym-header></ym-header>
+    <ym-layout>
+      <ym-content></ym-content>
+      <ym-sider></ym-sider>
+    </ym-layout>
+    <ym-footer></ym-footer>
+  </ym-layout>
 
-  <div style="margin-top: 1000px;"></div>
-  <ym-row gutter="20">
-    <ym-col>
-      <div class="col-inner">1</div>
-    </ym-col>
-    <ym-col>
-      <div class="col-inner">2</div>
-    </ym-col>
-  </ym-row>
-
-  <ym-row gutter="20">
-    <ym-col>
-      <div class="col-inner">1</div>
-    </ym-col>
-    <ym-col>
-      <div class="col-inner">2</div>
-    </ym-col>
-    <ym-col>
-      <div class="col-inner">3</div>
-    </ym-col>
-  </ym-row>
-
-  <ym-row gutter="20">
-    <ym-col>
-      <div class="col-inner">1</div>
-    </ym-col>
-    <ym-col>
-      <div class="col-inner">2</div>
-    </ym-col>
-    <ym-col>
-      <div class="col-inner">3</div>
-    </ym-col>
-    <ym-col>
-      <div class="col-inner">4</div>
-    </ym-col>
-  </ym-row>
-
-  <ym-row gutter="20">
-    <ym-col span="4">
-      <div class="col-inner">1</div>
-    </ym-col>
-    <ym-col span="20">
-      <div class="col-inner">2</div>
-    </ym-col>
-  </ym-row>
-
-  <ym-row gutter="20">
-    <ym-col span="2">
-      <div class="col-inner">1</div>
-    </ym-col>
-    <ym-col span="20" offset="2">
-      <div class="col-inner">2</div>
-    </ym-col>
-  </ym-row>
-
-  <ym-row gutter="20">
-    <ym-col span="4">
-      <div class="col-inner">1</div>
-    </ym-col>
-    <ym-col span="18" offset="2">
-      <div class="col-inner">2</div>
-    </ym-col>
-  </ym-row>
-
-  <ym-row gutter="20">
-    <ym-col span="3">
-      <div class="col-inner">1</div>
-    </ym-col>
-    <ym-col span="6" offset="4">
-      <div class="col-inner">2</div>
-    </ym-col>
-    <ym-col span="7" offset="4">
-      <div class="col-inner">2</div>
-    </ym-col>
-  </ym-row>
-
-  <ym-row gutter="20">
-    <ym-col span="4">
-      <div class="col-inner">1</div>
-    </ym-col>
-    <ym-col span="4" offset="6">
-      <div class="col-inner">2</div>
-    </ym-col>
-    <ym-col span="8" offset="2">
-      <div class="col-inner">3</div>
-    </ym-col>
-  </ym-row>
-
-
-  <div id="test"></div>
+  <ym-layout>
+    <ym-sider></ym-sider>
+    <ym-layout>
+      <ym-header></ym-header>
+      <ym-content></ym-content>
+      <ym-footer></ym-footer>
+    </ym-layout>
+  </ym-layout>
 </div>
 
 <script src="./src/app.js"></script>

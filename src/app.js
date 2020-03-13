@@ -5,6 +5,11 @@ import ButtonGroup from './button-group'
 import Input from './input'
 import Row from './row'
 import Col from './col'
+import Layout from './layout'
+import Header from './header'
+import Sider from './sider'
+import Content from './content'
+import Footer from './footer'
 
 Vue.component('ym-button', Button)
 Vue.component('ym-icon', Icon)
@@ -12,6 +17,11 @@ Vue.component('ym-button-group', ButtonGroup)
 Vue.component('ym-input', Input)
 Vue.component('ym-row', Row)
 Vue.component('ym-col', Col)
+Vue.component('ym-layout', Layout)
+Vue.component('ym-header', Header)
+Vue.component('ym-sider', Sider)
+Vue.component('ym-content', Content)
+Vue.component('ym-footer', Footer)
 
 new Vue({
   el: '#app',
