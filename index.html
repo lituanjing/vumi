@@ -58,9 +58,11 @@
     <ym-layout>
       <ym-header class="header">header</ym-header>
       <ym-content>
-        <div>
-          <ym-button @click="showToast">show toast</ym-button>
-        </div>
+        <div style="margin-top: 15px;"></div>
+        <ym-button @click="showToast('top')" style="margin-left: 12px;">show top toast</ym-button>
+        <ym-button @click="showToast('middle')" style="margin-left: 12px;">show middle toast</ym-button>
+        <ym-button @click="showToast('bottom')" style="margin-left: 12px;">show bottom toast</ym-button>
+        <ym-button @click="showToast('x')" style="margin-left: 12px;">show x toast</ym-button>
       </ym-content>
       <ym-footer class="footer">footer</ym-footer>
     </ym-layout>

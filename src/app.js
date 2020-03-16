@@ -41,18 +41,20 @@ new Vue({
       是一行很长很长很长的文本我是一行很长很长很长的文本我是一行很长很长很长的文本, 完`,
       {
       // enableHtml: true,
-      closeButton: {
-        text: '知道啦',
-        callback (toast) {
-          toast.log()
-          console.log('知道啦 你是真的皮')
+        position: 'bottom',
+        closeButton: {
+          text: '知道啦',
+          callback (toast) {
+            toast.log()
+            console.log('知道啦 你是真的皮')
+          }
         }
       }
-    })
+    )
   },
   methods: {
-    showToast () {
-      this.$toast('余米', {})
+    showToast (position) {
+      this.$toast('余米', { position })
     }
   }
 })
