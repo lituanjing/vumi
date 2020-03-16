@@ -54,7 +54,7 @@ new Vue({
   },
   methods: {
     showToast (position) {
-      this.$toast('余米', { position })
+      this.$toast('余米' + Math.floor(Math.random() * 1000), { position })
     }
   }
 })
