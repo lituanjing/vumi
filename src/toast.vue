@@ -80,6 +80,7 @@ export default {
     },
     close () {
       this.$el.remove()
+      this.$emit('close')
       this.$destroy()
     }
   },
@@ -91,7 +92,13 @@ $font-size: 14px;
 $toast-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
 
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .ym-toast {
+  animation: fade-in .3s linear;
   position: fixed;  font-size: $font-size;
   line-height: 1.8; min-height: $toast-height; display: flex; align-items: center;
   border-radius: 4px; background: $toast-bg; box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.50);
