@@ -9,6 +9,7 @@ import YmHeader from './src/header'
 import YmSider from './src/sider'
 import YmContent from './src/content'
 import YmFooter from './src/footer'
+import YmToast from './src/plugin'
 
 export {
   YmButton,
@@ -22,4 +23,5 @@ export {
   YmSider,
   YmContent,
   YmFooter,
+  YmToast,
 }
