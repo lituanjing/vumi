@@ -34,103 +34,25 @@ new Vue({
     loading3: false,
     str: 'message'
   },
+  mounted () {
+    this.$toast(
+      // `<strong>余米'</strong>11111 <a href="https://baidu.com">百度</a>`,
+      `我是一行很长很长很长的文本我是一行很长很长很长的文本我是一行很长很长很长的文本我
+      是一行很长很长很长的文本我是一行很长很长很长的文本我是一行很长很长很长的文本, 完`,
+      {
+      // enableHtml: true,
+      closeButton: {
+        text: '知道啦',
+        callback (toast) {
+          toast.log()
+          console.log('知道啦 你是真的皮')
+        }
+      }
+    })
+  },
   methods: {
     showToast () {
-      this.$toast('余米')
+      this.$toast('余米', {})
     }
   }
 })
-
-// 单元测试
-import chai from 'chai'
-import spies from 'chai-spies'
-
-chai.use(spies)
-const expect = chai.expect
-
-{
-  const Constructor = Vue.extend(Button)
-  const vm = new Constructor({
-    propsData: {
-      icon: 'settings',
-    }
-  })
-  // vm.$mount('#test')
-  vm.$mount()
-  let useElement = vm.$el.querySelector('use')
-  expect(useElement.getAttribute('xlink:href')).to.eq('#icon-settings')
-  vm.$el.remove()
-  vm.$destroy()
-}
-
-{
-  const Constructor = Vue.extend(Button)
-  const vm = new Constructor({
-    propsData: {
-      icon: 'settings',
-      loading: true
-    }
-  })
-  // vm.$mount('#test')
-  vm.$mount()
-  let useElement = vm.$el.querySelector('use')
-  expect(useElement.getAttribute('xlink:href')).to.eq('#icon-loading')
-  vm.$el.remove()
-  vm.$destroy()
-}
-
-{
-  const Constructor = Vue.extend(Button)
-  const vm = new Constructor({
-    propsData: {
-      icon: 'settings',
-    }
-  })
-
-  const div = document.createElement('div')
-  document.body.appendChild(div)
-  vm.$mount(div)
-  let svgElement = vm.$el.querySelector('svg')
-  let { order } = window.getComputedStyle(svgElement)
-  expect(order).to.eq('1')
-  vm.$el.remove()
-  vm.$destroy()
-}
-
-{
-  const Constructor = Vue.extend(Button)
-  const vm = new Constructor({
-    propsData: {
-      icon: 'settings',
-      iconPosition: 'right'
-    }
-  })
-
-  const div = document.createElement('div')
-  document.body.appendChild(div)
-  vm.$mount(div)
-  let svgElement = vm.$el.querySelector('svg')
-  let { order } = window.getComputedStyle(svgElement)
-  expect(order).to.eq('2')
-  vm.$el.remove()
-  vm.$destroy()
-}
-
-{
-  const Constructor = Vue.extend(Button)
-  const vm = new Constructor({
-    propsData: {
-      icon: 'settings',
-      iconPosition: 'right'
-    }
-  })
-  vm.$mount()
-  let spy = chai.spy(function () {})
-
-  vm.$on('click', spy)
-  let button = vm.$el
-  button.click()
-  expect(spy).to.have.been.called()
-  vm.$el.remove()
-  vm.$destroy()
-}
