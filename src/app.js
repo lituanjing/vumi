@@ -10,6 +10,7 @@ import Header from './header'
 import Sider from './sider'
 import Content from './content'
 import Footer from './footer'
+import plugin from './plugin'
 
 Vue.component('ym-button', Button)
 Vue.component('ym-icon', Icon)
@@ -23,6 +24,8 @@ Vue.component('ym-sider', Sider)
 Vue.component('ym-content', Content)
 Vue.component('ym-footer', Footer)
 
+Vue.use(plugin)
+
 new Vue({
   el: '#app',
   data: {
@@ -32,12 +35,8 @@ new Vue({
     str: 'message'
   },
   methods: {
-    toggleStatus (attr) {
-      this[attr] = !this[attr]
-    },
-    inputChange (e) {
-      console.log('e')
-      console.log(e)
+    showToast () {
+      this.$toast('余米')
     }
   }
 })
