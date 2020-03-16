@@ -42,6 +42,7 @@ new Vue({
       {
       // enableHtml: true,
         position: 'bottom',
+        autoClose: false,
         closeButton: {
           text: '知道啦',
           callback (toast) {
