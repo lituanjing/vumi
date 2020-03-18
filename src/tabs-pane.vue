@@ -6,7 +6,19 @@
 
 <script>
 export default {
-  name: "YmTabsPane"
+  name: "YmTabsPane",
+  props: {
+    name: {
+      type: Number | String,
+      required: true,
+    }
+  },
+  inject: ['eventBus'],
+  created () {
+    this.eventBus.$on('update:selected', (name) => {
+      console.log(`tabs-pane[${this.name}] accepted ${name}`)
+    })
+  }
 }
 </script>
 

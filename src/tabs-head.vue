@@ -7,7 +7,11 @@
 
 <script>
 export default {
-  name: "YmTabsHead"
+  name: "YmTabsHead",
+  inject: ['eventBus'],
+  created () {
+    console.log(this.eventBus)
+  }
 }
 </script>
 

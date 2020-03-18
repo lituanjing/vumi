@@ -10,6 +10,11 @@ import YmSider from './src/sider'
 import YmContent from './src/content'
 import YmFooter from './src/footer'
 import YmToast from './src/plugin'
+import YmTabs from './src/tabs'
+import YmTabsHead from './src/tabs-head'
+import YmTabsItem from './src/tabs-item'
+import YmTabsBody from './src/tabs-body'
+import YmTabsPane from './src/tabs-pane'
 
 export {
   YmButton,
@@ -24,4 +29,9 @@ export {
   YmContent,
   YmFooter,
   YmToast,
+  YmTabs,
+  YmTabsHead,
+  YmTabsItem,
+  YmTabsBody,
+  YmTabsPane,
 }

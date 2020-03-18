@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
   name: "YmTabs",
   props: {
@@ -20,8 +21,18 @@ export default {
       }
     }
   },
+  data () {
+    return {
+      eventBus: new Vue()
+    }
+  },
   created () {
     // this.$emit('update:selected', 'xxx')
+  },
+  provide () {
+    return {
+      eventBus: this.eventBus
+    }
   }
 }
 </script>

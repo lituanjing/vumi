@@ -1,5 +1,5 @@
 <template>
-  <div class="ym-tabs-item">
+  <div @click="xxx" class="ym-tabs-item">
     <slot></slot>
   </div>
 </template>
@@ -10,7 +10,22 @@ export default {
   props: {
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
+    },
+    name: {
+      type: String | Number,
+      required: true
+    }
+  },
+  inject: ['eventBus'],
+  created () {
+    this.eventBus.$on('update:selected', (name) => {
+      console.log(`tabs-item[${this.name}] accepted ${name}`)
+    })
+  },
+  methods: {
+    xxx () {
+      this.eventBus.$emit('update:selected', this.name)
     }
   }
 }
