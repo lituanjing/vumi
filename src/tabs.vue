@@ -26,8 +26,8 @@ export default {
       eventBus: new Vue()
     }
   },
-  created () {
-    // this.$emit('update:selected', 'xxx')
+  mounted () {
+    this.eventBus.$emit('update:selected', this.selected)
   },
   provide () {
     return {

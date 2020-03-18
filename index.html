@@ -62,9 +62,6 @@
 
         <ym-tabs :selected.sync="selectedTab" style="margin-left: 15px;">
           <ym-tabs-head class="yumi-tabs-head">
-            <slot name="actions">
-              <Button>设置</Button>
-            </slot>
             <ym-tabs-item name="tab1">
               标签1
             </ym-tabs-item>
@@ -74,6 +71,9 @@
             <ym-tabs-item name="tab3">
               标签3
             </ym-tabs-item>
+            <template slot="actions">
+              <Button>设置</Button>
+            </template>
           </ym-tabs-head>
 
           <ym-tabs-body>

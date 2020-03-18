@@ -1,5 +1,5 @@
 <template>
-  <div @click="xxx" class="ym-tabs-item">
+  <div :class="classes" @click="xxx" class="ym-tabs-item">
     <slot></slot>
   </div>
 </template>
@@ -18,9 +18,21 @@ export default {
     }
   },
   inject: ['eventBus'],
+  data () {
+    return {
+      active: false
+    }
+  },
+  computed: {
+    classes () {
+      return {
+        active: this.active
+      }
+    }
+  },
   created () {
     this.eventBus.$on('update:selected', (name) => {
-      console.log(`tabs-item[${this.name}] accepted ${name}`)
+      this.active = name === this.name
     })
   },
   methods: {
@@ -32,5 +44,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.ym-tabs-item {}
+.ym-tabs-item {
+  flex-shrink: 0;
+  padding: 0 2em;
+  &.active {
+    background: red;;
+  }
+}
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div class="ym-tabs-head">
     <slot></slot>
-    <slot name="actions"></slot>
+    <div class="actions-wrapper">
+      <slot name="actions"></slot>
+    </div>
   </div>
 </template>
 
@@ -16,5 +18,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.ym-tabs-head {}
+$tabs-height: 40px;
+.ym-tabs-head {
+  display: flex;
+  height: $tabs-height;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid red;
+  > .actions-wrapper {
+    margin-left: auto;
+  }
+}
 </style>
