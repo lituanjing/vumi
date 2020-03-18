@@ -11,6 +11,11 @@ import Sider from './sider'
 import Content from './content'
 import Footer from './footer'
 import plugin from './plugin'
+import Tabs from './tabs'
+import TabsHead from './tabs-head'
+import TabsItem from './tabs-item'
+import TabsBody from './tabs-body'
+import TabsPane from './tabs-pane'
 
 Vue.component('ym-button', Button)
 Vue.component('ym-icon', Icon)
@@ -23,39 +28,21 @@ Vue.component('ym-header', Header)
 Vue.component('ym-sider', Sider)
 Vue.component('ym-content', Content)
 Vue.component('ym-footer', Footer)
+Vue.component('ym-tabs', Tabs)
+Vue.component('ym-tabs-head', TabsHead)
+Vue.component('ym-tabs-item', TabsItem)
+Vue.component('ym-tabs-body', TabsBody)
+Vue.component('ym-tabs-pane', TabsPane)
 
 Vue.use(plugin)
 
 new Vue({
   el: '#app',
   data: {
-    loading1: false,
-    loading2: false,
-    loading3: false,
-    str: 'message'
+    selectedTab: 'tab1'
   },
   mounted () {
-    this.$toast(
-      // `<strong>余米'</strong>11111 <a href="https://baidu.com">百度</a>`,
-      `我是一行很长很长很长的文本我是一行很长很长很长的文本我是一行很长很长很长的文本我
-      是一行很长很长很长的文本我是一行很长很长很长的文本我是一行很长很长很长的文本, 完`,
-      {
-      // enableHtml: true,
-        position: 'bottom',
-        autoClose: false,
-        closeButton: {
-          text: '知道啦',
-          callback (toast) {
-            toast.log()
-            console.log('知道啦 你是真的皮')
-          }
-        }
-      }
-    )
   },
   methods: {
-    showToast (position) {
-      this.$toast('余米' + Math.floor(Math.random() * 1000), { position })
-    }
   }
 })

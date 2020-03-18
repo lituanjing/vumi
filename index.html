@@ -58,49 +58,30 @@
     <ym-layout>
       <ym-header class="header">header</ym-header>
       <ym-content>
-
-        <ym-tabs seleted="tab1">
-          <ym-tabs-nav>
-            <ym-tabs-item name="tab1">
-              <template slot="label">
-                <ym-icon></ym-icon>
-                标签1
-              </template>
-            </ym-tabs-item>
-            <ym-tabs-item name="tab2" label="标签2">
-            </ym-tabs-item>
-            <ym-tabs-item name="tab3" label="标签3">
-            </ym-tabs-item>
-          </ym-tabs-nav>
-
-          <ym-content>
-            <ym-tab-pane name="tab1">标签一的内容</ym-tab-pane>
-            <ym-tab-pane name="tab2">标签二的内容</ym-tab-pane>
-            <ym-tab-pane name="tab3">标签三的内容</ym-tab-pane>
-          </ym-content>
-        </ym-tabs>
-
-        <ym-tabs>
-          <ym-tabs-item>
-            <template slot="label">
-              <ym-icon></ym-icon>
-              标签1
-            </template>
-            <div>标签一的内容</div>
-          </ym-tabs-item>
-          <ym-tabs-item label="标签2">
-            <div>标签二的内容</div>
-          </ym-tabs-item>
-          <ym-tabs-item label="标签3">
-            <div>标签三的内容</div>
-          </ym-tabs-item>
-        </ym-tabs>
-
         <div style="margin-top: 15px;"></div>
-        <ym-button @click="showToast('top')" style="margin-left: 12px;">show top toast</ym-button>
-        <ym-button @click="showToast('middle')" style="margin-left: 12px;">show middle toast</ym-button>
-        <ym-button @click="showToast('bottom')" style="margin-left: 12px;">show bottom toast</ym-button>
-        <ym-button @click="showToast('x')" style="margin-left: 12px;">show x toast</ym-button>
+
+        <ym-tabs :selected.sync="selectedTab" style="margin-left: 15px;">
+          <ym-tabs-head>
+            <slot name="actions">
+              <Button>设置</Button>
+            </slot>
+            <ym-tabs-item name="tab1">
+              标签1
+            </ym-tabs-item>
+            <ym-tabs-item name="tab2" disabled>
+              标签2
+            </ym-tabs-item>
+            <ym-tabs-item name="tab3">
+              标签3
+            </ym-tabs-item>
+          </ym-tabs-head>
+
+          <ym-tabs-body>
+            <ym-tabs-pane name="tab1">标签一的内容</ym-tabs-pane>
+            <ym-tabs-pane name="tab2">标签二的内容</ym-tabs-pane>
+            <ym-tabs-pane name="tab3">标签三的内容</ym-tabs-pane>
+          </ym-tabs-body>
+        </ym-tabs>
       </ym-content>
       <ym-footer class="footer">footer</ym-footer>
     </ym-layout>
