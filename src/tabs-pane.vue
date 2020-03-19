@@ -36,8 +36,8 @@ export default {
 
 <style lang="scss" scoped>
 .ym-tabs-pane {
+  padding: 1em;
   &.active {
-    background: red;
   }
 }
 </style>
