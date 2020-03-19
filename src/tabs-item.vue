@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" @click="onClick" class="ym-tabs-item">
+  <div :class="classes" :data-name="name" @click="onClick" class="ym-tabs-item">
     <slot></slot>
   </div>
 </template>
@@ -32,9 +32,11 @@ export default {
     }
   },
   created () {
-    this.eventBus.$on('update:selected', (name) => {
-      this.active = name === this.name
-    })
+    if (this.eventBus) {
+      this.eventBus.$on('update:selected', (name) => {
+        this.active = name === this.name
+      })
+    }
   },
   methods: {
     onClick () {
