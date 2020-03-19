@@ -37,13 +37,14 @@ export default {
   },
   methods: {
     xxx () {
-      this.eventBus.$emit('update:selected', this.name)
+      this.eventBus.$emit('update:selected', this.name, this)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+$blue: #1989fa;
 .ym-tabs-item {
   flex-shrink: 0;
   padding: 0 2em;
@@ -51,9 +52,9 @@ export default {
   height: 100%;
   display: flex;
   align-items: center;
-  border: 1px solid green;
   &.active {
-    background: red;;
+    color: $blue;
+    font-weight: bold;
   }
 }
 </style>

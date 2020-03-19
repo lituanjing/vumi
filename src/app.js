@@ -39,7 +39,7 @@ Vue.use(plugin)
 new Vue({
   el: '#app',
   data: {
-    selectedTab: 'tab1'
+    selectedTab: 'tab3'
   },
   mounted () {
   },

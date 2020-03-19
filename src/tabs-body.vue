@@ -9,7 +9,6 @@ export default {
   name: "YmTabsBody",
   inject: ['eventBus'],
   created () {
-    console.log(this.eventBus)
   }
 }
 </script>
