@@ -26,16 +26,21 @@ export default {
       eventBus: new Vue()
     }
   },
+  methods: {
+    selectTab () {
+      this.$children.forEach(vm => {
+        if (vm.$options.name === 'YmTabsHead') {
+          vm.$children.forEach(childVm => {
+            if (childVm.$options.name === 'YmTabsItem' && childVm.name === this.selected) {
+              this.eventBus.$emit('update:selected', this.selected, childVm)
+            }
+          })
+        }
+      })
+    }
+  },
   mounted () {
-    this.$children.forEach(vm => {
-      if (vm.$options.name === 'YmTabsHead') {
-        vm.$children.forEach(childVm => {
-          if (childVm.$options.name === 'YmTabsItem' && childVm.name === this.selected) {
-            this.eventBus.$emit('update:selected', this.selected, childVm)
-          }
-        })
-      }
-    })
+    this.selectTab()
   },
   provide () {
     return {
