@@ -45,5 +45,8 @@ new Vue({
   mounted () {
   },
   methods: {
+    yyy () {
+      console.log('yyy')
+    }
   }
 })

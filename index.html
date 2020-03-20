@@ -49,6 +49,14 @@
     height: 50px;
   }
   </style>
+
+  <style>
+  .popover-wrapper {
+    padding: 15px;
+    overflow: hidden;
+    border: 1px solid green;
+  }
+  </style>
 </head>
 <body>
 
@@ -59,20 +67,24 @@
       <ym-header class="header">header</ym-header>
       <ym-content style="padding-left: 24px;">
         <div style="margin-top: 15px;"></div>
+        <div style="height: 1080px; border: 1px solid red;"></div>
 
-        <ym-popover>
-          <template slot="content">
-            <div>悬浮看见我</div>
-          </template>
-          <ym-button>点我</ym-button>
-        </ym-popover>
+        <div @click="yyy" class="popover-wrapper">
 
-        <ym-popover>
-          <template slot="content">
-            <div>悬浮看见我</div>
-          </template>
-          <ym-button>点我</ym-button>
-        </ym-popover>
+          <ym-popover>
+            <template slot="content">
+              <div>悬浮看见我</div>
+            </template>
+            <ym-button>点我</ym-button>
+          </ym-popover>
+
+          <ym-popover>
+            <template slot="content">
+              <div>悬浮看见我</div>
+            </template>
+            <ym-button>点我</ym-button>
+          </ym-popover>
+        </div>
 
       </ym-content>
       <ym-footer class="footer">footer</ym-footer>
