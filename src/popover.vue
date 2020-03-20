@@ -1,6 +1,6 @@
 <template>
-  <div class="ym-popover" @click="xxx">
-    <div v-if="visible" class="ym-popover-content-wrapper">
+  <div class="ym-popover" @click.stop="xxx">
+    <div v-if="visible" @click.stop class="ym-popover-content-wrapper">
       <slot name="content"></slot>
     </div>
     <slot></slot>
@@ -18,6 +18,21 @@ export default {
   methods: {
     xxx () {
       this.visible = !this.visible
+      console.log('切换 visible')
+      if (this.visible) {
+        setTimeout(() => {
+          console.log('新增 document click 监听器')
+          let eventHandler = () => {
+            console.log('document 隐藏 popover')
+            this.visible = false
+            console.log('删除监听器')
+            document.removeEventListener('click', eventHandler)
+          }
+          document.addEventListener('click', eventHandler)
+        }, 27)
+      } else {
+        console.log('vm 隐藏 popover')
+      }
     }
   }
 }
