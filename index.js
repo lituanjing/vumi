@@ -15,6 +15,7 @@ import YmTabsHead from './src/tabs-head'
 import YmTabsItem from './src/tabs-item'
 import YmTabsBody from './src/tabs-body'
 import YmTabsPane from './src/tabs-pane'
+import YmPopover from './src/popover'
 
 export {
   YmButton,
@@ -34,4 +35,5 @@ export {
   YmTabsItem,
   YmTabsBody,
   YmTabsPane,
+  YmPopover,
 }

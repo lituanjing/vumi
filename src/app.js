@@ -16,6 +16,7 @@ import TabsHead from './tabs-head'
 import TabsItem from './tabs-item'
 import TabsBody from './tabs-body'
 import TabsPane from './tabs-pane'
+import Popover from './popover'
 
 Vue.component('ym-button', Button)
 Vue.component('ym-icon', Icon)
@@ -33,13 +34,13 @@ Vue.component('ym-tabs-head', TabsHead)
 Vue.component('ym-tabs-item', TabsItem)
 Vue.component('ym-tabs-body', TabsBody)
 Vue.component('ym-tabs-pane', TabsPane)
+Vue.component('ym-popover', Popover)
 
 Vue.use(plugin)
 
 new Vue({
   el: '#app',
   data: {
-    selectedTab: 'tab3'
   },
   mounted () {
   },

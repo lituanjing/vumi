@@ -57,35 +57,16 @@
     <ym-sider class="sider">sider</ym-sider>
     <ym-layout>
       <ym-header class="header">header</ym-header>
-      <ym-content>
+      <ym-content style="padding-left: 24px;">
         <div style="margin-top: 15px;"></div>
 
-        <ym-tabs :selected.sync="selectedTab" style="margin-left: 15px;">
-          <ym-tabs-head class="yumi-tabs-head">
-            <ym-tabs-item name="tab1">
-              <ym-icon name="settings"></ym-icon>标签1
-            </ym-tabs-item>
-            <ym-tabs-item name="tab2" disabled>
-              标签2
-            </ym-tabs-item>
-            <ym-tabs-item name="tab3">
-              标签3
-            </ym-tabs-item>
-            <ym-tabs-item name="tab4">
-              标签4
-            </ym-tabs-item>
-            <template slot="actions">
-              <Button>设置</Button>
-            </template>
-          </ym-tabs-head>
+        <ym-popover>
+          <template slot="content">
+            <div>悬浮看见我</div>
+          </template>
+          <ym-button>点我</ym-button>
+        </ym-popover>
 
-          <ym-tabs-body>
-            <ym-tabs-pane name="tab1">标签一的内容</ym-tabs-pane>
-            <ym-tabs-pane name="tab2">标签二的内容</ym-tabs-pane>
-            <ym-tabs-pane name="tab3">标签三的内容</ym-tabs-pane>
-            <ym-tabs-pane name="tab4">标签四的内容</ym-tabs-pane>
-          </ym-tabs-body>
-        </ym-tabs>
       </ym-content>
       <ym-footer class="footer">footer</ym-footer>
     </ym-layout>
