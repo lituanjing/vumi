@@ -7,43 +7,49 @@
   <title>yumi - 余米</title>
 
   <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    html {
-      --button-height: 32px;
-      --font-size: 14px;
-      --button-bg: white;
-      --button-active-bg: #eee;
-      --border-radius: 4px;
-      --color: #333;
-      --border-color: #999;
-      --border-color-hover: #666;
-    }
+  * {margin: 0; padding: 0; box-sizing: border-box;}
 
-    body {
-      font-size: var(--font-size);
-    }
+  html {
+    --button-height: 32px;
+    --font-size: 14px;
+    --button-bg: white;
+    --button-active-bg: #eee;
+    --border-radius: 4px;
+    --color: #333;
+    --border-color: #999;
+    --border-color-hover: #666;
+  }
+
+  body {
+    font-size: var(--font-size);
+  }
   </style>
   <style>
   .demo {
     min-height: 100px;
     border: 1px solid;
   }
+
   .demo-layout {
     height: 100vh;
   }
+
   .separate {
     margin: 200px 20px;
     height: 20px;
     background-color: steelblue;
   }
+
   .sider {
     background: #333;
     width: 200px;
   }
+
   .header {
     background: #999;
     height: 100px;
   }
+
   .footer {
     background: #ccc;
     height: 50px;
@@ -69,22 +75,69 @@
         <div style="margin-top: 15px;"></div>
 
         <div @click="yyy" class="popover-wrapper">
-
           <ym-popover>
             <template slot="content">
-              <div>悬浮看见我</div>
+              <div>点击会在上面看到我</div>
             </template>
             <ym-button>点我</ym-button>
           </ym-popover>
-
-          <ym-popover>
+          <ym-popover position="bottom">
             <template slot="content">
-              <div>悬浮看见我</div>
+              <div>点击会在下面看到我</div>
+            </template>
+            <ym-button>点我</ym-button>
+          </ym-popover>
+          <ym-popover position="left">
+            <template slot="content" >
+              <div>点击会在左面看到我</div>
+            </template>
+            <ym-button>
+              <p>点我</p>
+              <p>点我</p>
+              <p>点我</p>
+            </ym-button>
+          </ym-popover>
+          <ym-popover position="left">
+            <template slot="content" >
+              <div>点击会在左面看到我</div>
+            </template>
+            <a href="javascript: " style="font-size: 12px; line-height: 12px;">点我</a>
+          </ym-popover>
+          <ym-popover position="right">
+            <template slot="content">
+              <div>点击会在右面看见我</div>
             </template>
             <ym-button>点我</ym-button>
           </ym-popover>
         </div>
 
+        <div @click="yyy" class="popover-wrapper">
+          <ym-popover>
+            <template slot="content">
+              <div>悬浮会在上面看到我</div>
+            </template>
+            <ym-button>悬浮</ym-button>
+          </ym-popover>
+
+          <ym-popover position="bottom">
+            <template slot="content">
+              <div>悬浮会在下面看到我</div>
+            </template>
+            <ym-button>悬浮</ym-button>
+          </ym-popover>
+          <ym-popover position="left">
+            <template slot="content">
+              <div>悬浮会在左面看到我</div>
+            </template>
+            <ym-button>悬浮</ym-button>
+          </ym-popover>
+          <ym-popover position="right">
+            <template slot="content">
+              <div>悬浮会在右面看见我</div>
+            </template>
+            <ym-button>悬浮</ym-button>
+          </ym-popover>
+        </div>
       </ym-content>
       <ym-footer class="footer">footer</ym-footer>
     </ym-layout>
