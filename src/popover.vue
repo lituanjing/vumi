@@ -83,6 +83,9 @@ export default {
       contentWrapper.style.top = `${positions[position].top}px`
     },
     onClickDocument (ev) {
+      if (this.$refs.popover &&
+        (this.$refs.popover === ev.target || this.$refs.popover.contains(ev.target))
+      ) { return }
       if (this.$refs.contentWrapper &&
         (this.$refs.contentWrapper === ev.target || this.$refs.contentWrapper.contains(ev.target))
       ) { return }
