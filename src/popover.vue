@@ -4,7 +4,7 @@
          :class="{[`ym-popover-position-${position}`]: true}"
          ref="contentWrapper"
          class="ym-popover-content-wrapper">
-        <slot name="content"></slot>
+        <slot name="content" :close="close"></slot>
     </div>
     <span ref="triggerWrapper" style="display: inline-block;">
       <slot></slot>

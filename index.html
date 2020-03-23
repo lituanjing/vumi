@@ -76,8 +76,9 @@
 
         <div @click="yyy" class="popover-wrapper">
           <ym-popover>
-            <template slot="content">
+            <template slot="content" slot-scope="{ close }">
               <div>点击会在上面看到我</div>
+              <ym-button @click="close">关闭</ym-button>
             </template>
             <ym-button>点我</ym-button>
           </ym-popover>
@@ -114,7 +115,7 @@
         <div @click="yyy" class="popover-wrapper">
           <ym-popover trigger="hover">
             <template slot="content">
-              <div>悬浮会在上面看到我</div>
+              <div>悬浮会在 <a href="http://qq.com">qq</a> 上面看到我</div>
             </template>
             <ym-button>悬浮</ym-button>
           </ym-popover>
