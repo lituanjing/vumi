@@ -1,5 +1,5 @@
 <template>
-  <div ref="popover" @click="onClick" class="ym-popover">
+  <div ref="popover" class="ym-popover">
     <div v-if="visible"
          :class="{[`ym-popover-position-${position}`]: true}"
          ref="contentWrapper"
@@ -22,36 +22,65 @@ export default {
       validator (value) {
         return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0
       }
-    }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator (value) {
+        return ['click', 'hover'].indexOf(value) >= 0
+      }
+    },
   },
   data () {
     return {
       visible: false,
     }
   },
+  computed: {
+    openEvent () {
+      return this.trigger === 'click' ? 'click' : 'mouseenter'
+    },
+    closeEvent () {
+      return this.trigger === 'click' ? 'click' : 'mouseleave'
+    },
+  },
+  mounted () {
+    if (this.trigger ===  'click') {
+      this.$refs.popover.addEventListener('click', this.onClick)
+    } else {
+      this.$refs.popover.addEventListener(this.openEvent, this.open)
+      this.$refs.popover.addEventListener(this.closeEvent, this.close)
+    }
+  },
+  beforeDestroy () {
+    if (this.trigger ===  'click') {
+      this.$refs.popover.removeEventListener('click', this.onClick)
+    } else {
+      this.$refs.popover.removeEventListener(this.openEvent, this.open)
+      this.$refs.popover.removeEventListener(this.closeEvent, this.close)
+    }
+  },
   methods: {
     positionContent () {
-      const {
-        $refs: { contentWrapper, triggerWrapper }
-      } = this
-      document.body.appendChild(contentWrapper)
       const { scrollX, scrollY } = window
+      const { $refs: { contentWrapper, triggerWrapper }, position } = this
+      document.body.appendChild(contentWrapper)
       const { width, height, top, left } = triggerWrapper.getBoundingClientRect()
       const { height: selfHeight } = contentWrapper.getBoundingClientRect()
-      if (this.position === 'top') {
-        contentWrapper.style.left = `${left + scrollX}px`
-        contentWrapper.style.top = `${top + scrollY}px`
-      } else if (this.position === 'bottom') {
-        contentWrapper.style.left = `${left + scrollX}px`
-        contentWrapper.style.top = `${top + height + scrollY}px`
-      } else if (this.position === 'left') {
-        contentWrapper.style.left = `${left + scrollX}px`
-        contentWrapper.style.top = `${top + (height - selfHeight) / 2 + scrollY}px`
-      } else if (this.position === 'right') {
-        const { height: selfHeight } = contentWrapper.getBoundingClientRect()
-        contentWrapper.style.left = `${left + width + scrollX}px`
-        contentWrapper.style.top = `${top + (height - selfHeight) / 2 + scrollY}px`
+      const positions = {
+        top: { top: top + scrollY, left: left + scrollX, },
+        bottom: { top: top + height + scrollY, left: left + scrollX, },
+        left: {
+          top: top + (height - selfHeight) / 2 + scrollY,
+          left: left + scrollX,
+        },
+        right: {
+          top: top + (height - selfHeight) / 2 + scrollY,
+          left: left + width + scrollX,
+        },
       }
+      contentWrapper.style.left = `${positions[position].left}px`
+      contentWrapper.style.top = `${positions[position].top}px`
     },
     onClickDocument (ev) {
       if (this.$refs.contentWrapper &&
@@ -60,6 +89,7 @@ export default {
       this.close()
     },
     open () {
+      console.log('open')
       this.visible = true
       setTimeout(() => {
         this.positionContent()
@@ -67,6 +97,7 @@ export default {
       }, 27)
     },
     close () {
+      console.log('close')
       this.visible = false
       document.removeEventListener('click', this.onClickDocument)
     },
@@ -80,8 +111,6 @@ export default {
       }
     }
   },
-  mounted () {
-  }
 }
 </script>
 
@@ -108,7 +137,7 @@ $border-radius: 4px;
     &::before, &::after {
       content: '';
       display: block;
-      border: 10px solid transparent;
+      border: 10px solid red;
       width: 0;
       height: 0;
       position: absolute;
@@ -120,6 +149,7 @@ $border-radius: 4px;
 
       &::before, &::after {
         left: 10px;
+        border-bottom: 0;
       }
       &::before {
         border-top-color: #000;
@@ -132,6 +162,10 @@ $border-radius: 4px;
     }
     &.ym-popover-position-bottom {
       margin-top: 10px;
+      &::before, &::after {
+        left: 10px;
+        border-top: 0;
+      }
       &::before {
         border-bottom-color: #000;
         bottom: 100%;
@@ -148,6 +182,7 @@ $border-radius: 4px;
         left: 100%;
         top: 50%;
         transform: translateY(-50%);
+        border-right: 0;
       }
       &::before {
         border-left-color: #000;
@@ -163,6 +198,7 @@ $border-radius: 4px;
         top: 50%;
         transform: translateY(-50%);
         right: 100%;
+        border-left: 0;
       }
       &::before {
         border-right-color: #000;
