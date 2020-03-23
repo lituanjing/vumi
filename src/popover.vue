@@ -137,7 +137,7 @@ $border-radius: 4px;
     &::before, &::after {
       content: '';
       display: block;
-      border: 10px solid red;
+      border: 10px solid transparent;
       width: 0;
       height: 0;
       position: absolute;
