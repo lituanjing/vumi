@@ -89,15 +89,13 @@ export default {
       this.close()
     },
     open () {
-      console.log('open')
       this.visible = true
-      setTimeout(() => {
+      this.$nextTick(() => {
         this.positionContent()
         document.addEventListener('click', this.onClickDocument)
-      }, 27)
+      })
     },
     close () {
-      console.log('close')
       this.visible = false
       document.removeEventListener('click', this.onClickDocument)
     },
