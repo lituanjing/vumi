@@ -62,6 +62,9 @@
     overflow: hidden;
     border: 1px solid green;
   }
+  .title {
+    color: red;
+  }
   </style>
 </head>
 <body>
@@ -71,74 +74,13 @@
     <ym-sider class="sider">sider</ym-sider>
     <ym-layout>
       <ym-header class="header">header</ym-header>
-      <ym-content style="padding-left: 24px;">
-        <div style="margin-top: 15px;"></div>
-
-        <div @click="yyy" class="popover-wrapper">
-          <ym-popover>
-            <template slot="content" slot-scope="{ close }">
-              <div>点击会在上面看到我</div>
-              <ym-button @click="close">关闭</ym-button>
-            </template>
-            <ym-button>点我</ym-button>
-          </ym-popover>
-          <ym-popover position="bottom">
-            <template slot="content">
-              <div>点击会在下面看到我</div>
-            </template>
-            <ym-button>点我</ym-button>
-          </ym-popover>
-          <ym-popover position="left">
-            <template slot="content" >
-              <div>点击会在左面看到我</div>
-            </template>
-            <ym-button>
-              <p>点我</p>
-              <p>点我</p>
-              <p>点我</p>
-            </ym-button>
-          </ym-popover>
-          <ym-popover position="left">
-            <template slot="content" >
-              <div>点击会在左面看到我</div>
-            </template>
-            <a href="javascript: " style="font-size: 12px; line-height: 12px;">点我</a>
-          </ym-popover>
-          <ym-popover position="right">
-            <template slot="content">
-              <div>点击会在右面看见我</div>
-            </template>
-            <ym-button>点我</ym-button>
-          </ym-popover>
-        </div>
-
-        <div @click="yyy" class="popover-wrapper">
-          <ym-popover trigger="hover">
-            <template slot="content">
-              <div>悬浮会在 <a href="http://qq.com">qq</a> 上面看到我</div>
-            </template>
-            <ym-button>悬浮</ym-button>
-          </ym-popover>
-
-          <ym-popover trigger="hover" position="bottom">
-            <template slot="content">
-              <div>悬浮会在下面看到我</div>
-            </template>
-            <ym-button>悬浮</ym-button>
-          </ym-popover>
-          <ym-popover trigger="hover" position="left">
-            <template slot="content">
-              <div>悬浮会在左面看到我</div>
-            </template>
-            <ym-button>悬浮</ym-button>
-          </ym-popover>
-          <ym-popover trigger="hover" position="right">
-            <template slot="content">
-              <div>悬浮会在右面看见我</div>
-            </template>
-            <ym-button>悬浮</ym-button>
-          </ym-popover>
-        </div>
+      <ym-content style="padding: 24px;">
+        <ym-collapse>
+          <ym-collapse-item title="标题1">内容1</ym-collapse-item>
+          <ym-collapse-item title="标题2">内容2</ym-collapse-item>
+          <ym-collapse-item title="标题3">内容3</ym-collapse-item>
+          <ym-collapse-item title="标题4">内容4</ym-collapse-item>
+        </ym-collapse>
       </ym-content>
       <ym-footer class="footer">footer</ym-footer>
     </ym-layout>
