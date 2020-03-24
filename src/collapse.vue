@@ -5,8 +5,48 @@
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
-  name: "YmCollapse"
+  name: "YmCollapse",
+  props: {
+    single: {
+      type: Boolean,
+      default: false
+    },
+    selected: {
+      type: Array,
+    }
+  },
+  data () {
+    return {
+      eventBus: new Vue()
+    }
+  },
+  provide () {
+    return {
+      eventBus: this.eventBus
+    }
+  },
+  mounted () {
+    this.eventBus.$emit('update:selected', this.selected)
+
+    this.eventBus.$on('update:addSelected', (name) => {
+      let selectedCopy = JSON.parse(JSON.stringify(this.selected))
+      if (this.single) {
+        selectedCopy = [name]
+      } else {
+        selectedCopy.push(name)
+      }
+      this.eventBus.$emit('update:selected', selectedCopy)
+      this.$emit('update:selected', selectedCopy)
+    })
+    this.eventBus.$on('update:removeSelected', (name) => {
+      const index = this.selected.indexOf(name)
+      this.selected.splice(index, 1)
+      this.eventBus.$emit('update:selected', this.selected)
+      this.$emit('update:selected', this.selected)
+    })
+  }
 }
 </script>
 

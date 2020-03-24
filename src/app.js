@@ -44,13 +44,14 @@ Vue.use(plugin)
 
 new Vue({
   el: '#app',
-  data: {
+  data () {
+    return {
+      selectedTab: ['3', '1'],
+      selectedTab1: ['4'],
+    }
   },
   mounted () {
   },
   methods: {
-    yyy () {
-      console.log('yyy')
-    }
   }
 })

@@ -1,5 +1,5 @@
 <template>
-  <div @click="open=!open" class="ym-collapse-item">
+  <div @click="toggle" class="ym-collapse-item">
     <div class="ym-collapse-item__title">
       {{ title }}
     </div>
@@ -16,12 +16,31 @@ export default {
     title: {
       type: String,
       required: true,
+    },
+    name: {
+      type: String,
+      required: true,
     }
   },
+  inject: ['eventBus'],
   data () {
     return {
       open: false
     }
+  },
+  mounted () {
+    this.eventBus.$on('update:selected', (names) => {
+      this.open = names.indexOf(this.name) >= 0;
+    })
+  },
+  methods: {
+    toggle () {
+      if (this.open) {
+        this.eventBus.$emit('update:removeSelected', this.name)
+      } else {
+        this.eventBus.$emit('update:addSelected', this.name)
+      }
+    },
   }
 }
 </script>
