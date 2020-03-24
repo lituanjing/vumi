@@ -16,6 +16,8 @@ import YmTabsItem from './src/tabs-item'
 import YmTabsBody from './src/tabs-body'
 import YmTabsPane from './src/tabs-pane'
 import YmPopover from './src/popover'
+import YmCollapse from './src/collapse'
+import YmCollapseItem from './src/collapse-item'
 
 export {
   YmButton,
@@ -36,4 +38,6 @@ export {
   YmTabsBody,
   YmTabsPane,
   YmPopover,
+  YmCollapse,
+  YmCollapseItem,
 }
