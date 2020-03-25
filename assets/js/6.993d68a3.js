@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{259:function(e,n,t){"use strict";t.r(n);var a={name:"ym-install-image"},i=t(28),s=Object(i.a)(a,(function(){var e=this.$createElement;return(this._self._c||e)("div",[this._v("这里原本应该有张图")])}),[],!1,null,"0570160a",null);n.default=s.exports}}]);
