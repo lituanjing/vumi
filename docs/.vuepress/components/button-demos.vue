@@ -2,10 +2,7 @@
   <div>
     <ym-button>默认按钮</ym-button>
 
-    <pre>
-      <code>
-        {{ content }}
-      </code>
+    <pre> <code>{{ content }}</code>
     </pre>
   </div>
 </template>
@@ -19,7 +16,7 @@ export default {
     return {
       content: `
         <ym-button>默认按钮</ym-button>
-      `
+      `.replace(/\t+| +/g, '').trim()
     }
   }
 }

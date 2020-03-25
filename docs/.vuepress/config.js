@@ -1,28 +1,34 @@
+const path = require('path')
 module.exports = {
   base: '/vumi/',
   title: 'Yumi UI',
   description: '一个基于 Vue2.x 的 UI 组件库',
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
+  ],
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/' },
-      { text: 'External', link: 'https://google.com' },
+      { text: 'Github', link: 'https://github.com/lituanjing/vumi' },
     ],
     sidebar: [
       {
         title: '开发指南',
         children: [
-          '/install/',
-          '/get-started/',
+          'views/guide/install.md',
+          'views/guide/get-start.md'
         ]
       },
       {
         title: '组件',
         children: [
-          '/components/button',
-          '/components/input',
+          'views/components/basic/',
+          'views/components/form/',
+          'views/components/navigation/',
+          'views/components/notice/',
+          'views/components/other/'
         ]
       },
     ]
-  }
+  },
 }
