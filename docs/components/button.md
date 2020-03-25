@@ -2,4 +2,6 @@
 
 基础用法 
 
-<button-demos></button-demos>    
+<ClientOnly>
+    <button-demos></button-demos>    
+</ClientOnly>
