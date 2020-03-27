@@ -19,6 +19,7 @@ import TabsPane from './tabs-pane'
 import Popover from './popover'
 import Collapse from './collapse'
 import CollapseItem from './collapse-item'
+import Cascader from './cascader'
 
 Vue.component('ym-button', Button)
 Vue.component('ym-icon', Icon)
@@ -39,6 +40,7 @@ Vue.component('ym-tabs-pane', TabsPane)
 Vue.component('ym-popover', Popover)
 Vue.component('ym-collapse', Collapse)
 Vue.component('ym-collapse-item', CollapseItem)
+Vue.component('ym-cascader', Cascader)
 
 Vue.use(plugin)
 
