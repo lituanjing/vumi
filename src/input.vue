@@ -43,24 +43,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/*html {*/
-/*  --button-height: 32px;*/
-/*  --font-size: 14px;*/
-/*  --button-bg: white;*/
-/*  --button-active-bg: #eee;*/
-/*  --border-radius: 4px;*/
-/*  --color: #333;*/
-/*  --border-color: #999;*/
-/*  --border-color-hover: #666;*/
-/*}*/
-
-$height: 32px;
-$border-color: #999;
-$border-color-hover: #666;
-$border-radius: 4px;
-$font-size: 12px;
-$box-shadow-color: rgba(0, 0, 0, 0.5);
-$red: #F1453D;
+@import "var";
 
 .ym-input-wrapper {
   display: inline-flex;
