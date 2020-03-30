@@ -6,10 +6,11 @@
     </div>
     <div
       v-if="popoverVisible"
-      class="ym-cascader__popover">
-
-      <cascader-items :items="source" />
-
+      class="ym-cascader__popover-wrapper">
+      <cascader-items
+        class="ym-cascader__popover"
+        :items="source"
+        :height="popoverHeight" />
     </div>
   </div>
 </template>
@@ -25,6 +26,9 @@ export default {
   props: {
     source: {
       type: Array
+    },
+    popoverHeight: {
+      type: String
     }
   },
   data () {
@@ -40,15 +44,19 @@ export default {
 <style lang="scss" scoped>
 @import "var";
 .ym-cascader {
+  position: relative;
   &__trigger {
     height: 32px;
     width: 300px;
-    border: 1px solid red;
+    border: 1px solid black;
   }
-  &__popover {
-    height: 200px;
-    border: 1px solid red;
+  &__popover-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
     display: flex;
+    @extend .box-shadow;
     &-label {
       white-space: nowrap;
     }
