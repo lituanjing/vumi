@@ -8,9 +8,11 @@
       v-if="popoverVisible"
       class="ym-cascader__popover-wrapper">
       <cascader-items
-        class="ym-cascader__popover"
+        :selected="selected"
         :items="source"
-        :height="popoverHeight" />
+        :height="popoverHeight"
+        @update:selected="onUpdate"
+        class="ym-cascader__popover"/>
     </div>
   </div>
 </template>
@@ -29,6 +31,10 @@ export default {
     },
     popoverHeight: {
       type: String
+    },
+    selected: {
+      type: Array,
+      default: () => []
     }
   },
   data () {
@@ -37,6 +43,11 @@ export default {
     }
   },
   computed: {
+  },
+  methods: {
+    onUpdate (selected) {
+      this.$emit('update:selected', selected)
+    }
   }
 }
 </script>

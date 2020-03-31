@@ -6,8 +6,9 @@
         <ym-header class="header">header</ym-header>
         <ym-content style="padding: 24px;">
           <ym-button> top 按钮</ym-button>
+          {{ selected }}
 
-          <ym-cascader :source="source"></ym-cascader>
+          <ym-cascader :source="source" :selected.sync="selected"></ym-cascader>
 
           <ym-button> bottom 按钮</ym-button>
 
@@ -109,7 +110,8 @@ export default {
           ]
         },
         { name: '北京' },
-      ]
+      ],
+      selected: []
     }
   }
 }

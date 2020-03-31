@@ -1,9 +1,11 @@
 <template>
   <div class="ym-cascader-item" :style="{ height }">
+    <div>{{ level }}</div>
+    <div>{{ selected && selected[level] && selected[level].name }}</div>
     <div class="ym-cascader-item__left">
       <div
         v-for="item in items"
-        @click="leftSelected=item"
+        @click="onClickLabel(item)"
         class="ym-cascader-item__left-label">
         {{ item.name }}
 
@@ -14,7 +16,13 @@
     <div
       v-if="rightItems"
       class="ym-cascader-item__right">
-      <ym-cascader-items :items="rightItems" :height="height" />
+      <ym-cascader-items
+        :level="level+1"
+        :items="rightItems"
+        :selected="selected"
+        :height="height"
+        @update:selected="onUpdateSelected"
+      />
     </div>
   </div>
 </template>
@@ -33,19 +41,39 @@ export default {
     },
     height: {
       type: String
-    }
+    },
+    selected: {
+      type: Array,
+      default: () => []
+    },
+    level: {
+      type: Number,
+      default: 0
+    },
   },
   data () {
     return {
-      leftSelected: null
     }
   },
   computed: {
     rightItems () {
-      if (this.leftSelected && this.leftSelected.children) {
-        return this.leftSelected.children
+      const { selected, level } = this
+      let currentSelected = selected[level]
+      if (currentSelected && currentSelected.children) {
+        return currentSelected.children
       }
       return null
+    }
+  },
+  methods: {
+    onClickLabel (item) {
+      const { selected, level } = this
+      let copy = [...selected]
+      copy[level] = item
+      this.$emit('update:selected', copy)
+    },
+    onUpdateSelected (newSelected) {
+      this.$emit('update:selected', newSelected)
     }
   }
 }
