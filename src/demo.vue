@@ -10,7 +10,11 @@
           {{ selected && selected[1] && selected[1].name || '空' }}
           {{ selected && selected[2] && selected[2].name || '空' }}
 
-          <ym-cascader :source="source" :selected.sync="selected"></ym-cascader>
+          <ym-cascader
+            :source.sync="source"
+            :selected.sync="selected"
+            :load-data="loadData"
+            @update:selected="xxx"/>
 
           <ym-button> bottom 按钮</ym-button>
 
@@ -22,7 +26,6 @@
 </template>
 
 <script>
-import plugin from './plugin'
 import YmButton from './button'
 import YmButtonGroup from './button-group'
 import YmCascader from './cascader'
@@ -45,10 +48,13 @@ import YmTabsItem from './tabs-item'
 import YmTabsPane from './tabs-pane'
 import db from './db'
 
-console.log(db)
-
 function ajax (parentId = 0) {
-  return db.filter(item => item.parent_id === parentId)
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const result = db.filter(item => item.parent_id === parentId)
+      resolve(result)
+    }, 30)
+  })
 }
 
 export default {
@@ -77,9 +83,29 @@ export default {
   },
   data () {
     return {
-      source: ajax(),
+      source: [],
       selected: []
     }
+  },
+  created () {
+    ajax(0).then(res => {
+      this.source = res
+    })
+  },
+  methods: {
+    xxx (selected) {
+      // const { id } = selected[0]
+      // ajax(id).then(res => {
+      //   const lastLevelSelected = this.source.filter(item => item.id === id)[0]
+      //   this.$set(lastLevelSelected, 'children', res)
+      // })
+    },
+    loadData (item, updateSource) {
+      const { name, id, parent_id } = item
+      ajax(id).then(res => {
+        updateSource(res)
+      })
+    },
   }
 }
 </script>

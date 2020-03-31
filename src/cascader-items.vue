@@ -84,7 +84,8 @@ export default {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  height: 111px;
+  min-height: 111px;
+  max-height: 180px;
 
   &__left {
     height: 100%;
@@ -106,6 +107,7 @@ export default {
   &__right {
     height: 100%;
     border-left: 1px solid $border-color-light;
+    overflow: auto;
   }
 }
 </style>
