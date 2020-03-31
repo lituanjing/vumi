@@ -6,7 +6,9 @@
         <ym-header class="header">header</ym-header>
         <ym-content style="padding: 24px;">
           <ym-button> top 按钮</ym-button>
-          {{ selected }}
+          {{ selected && selected[0] && selected[0].name || '空' }}
+          {{ selected && selected[1] && selected[1].name || '空' }}
+          {{ selected && selected[2] && selected[2].name || '空' }}
 
           <ym-cascader :source="source" :selected.sync="selected"></ym-cascader>
 

@@ -70,6 +70,7 @@ export default {
       const { selected, level } = this
       let copy = [...selected]
       copy[level] = item
+      copy.splice(level + 1)
       this.$emit('update:selected', copy)
     },
     onUpdateSelected (newSelected) {
