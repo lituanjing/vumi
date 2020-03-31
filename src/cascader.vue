@@ -3,6 +3,7 @@
     <div
       @click="popoverVisible=!popoverVisible"
       class="ym-cascader__trigger">
+      {{ result || '&nbsp;' }}
     </div>
     <div
       v-if="popoverVisible"
@@ -43,6 +44,9 @@ export default {
     }
   },
   computed: {
+    result () {
+      return this.selected.map(i => i.name).join('/')
+    }
   },
   methods: {
     onUpdate (selected) {
@@ -57,14 +61,19 @@ export default {
 .ym-cascader {
   position: relative;
   &__trigger {
-    height: 32px;
-    width: 300px;
-    border: 1px solid black;
+    height: $input-height;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 1em;
+    min-width: 10em;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
   }
   &__popover-wrapper {
     position: absolute;
     top: 100%;
     left: 0;
+    margin-top: 8px;
     background: #fff;
     display: flex;
     @extend .box-shadow;

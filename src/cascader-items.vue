@@ -1,7 +1,5 @@
 <template>
   <div class="ym-cascader-item" :style="{ height }">
-    <div>{{ level }}</div>
-    <div>{{ selected && selected[level] && selected[level].name }}</div>
     <div class="ym-cascader-item__left">
       <div
         v-for="item in items"
@@ -91,6 +89,7 @@ export default {
   &__left {
     height: 100%;
     padding: .3em 0;
+    overflow: auto;
 
     &-label {
       padding: .3em 1em;

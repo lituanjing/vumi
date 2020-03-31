@@ -5,7 +5,7 @@
       <ym-layout>
         <ym-header class="header">header</ym-header>
         <ym-content style="padding: 24px;">
-          <ym-button> top 按钮</ym-button>
+          <ym-button @click="selected=[]"> 清空</ym-button>
           {{ selected && selected[0] && selected[0].name || '空' }}
           {{ selected && selected[1] && selected[1].name || '空' }}
           {{ selected && selected[2] && selected[2].name || '空' }}
@@ -43,6 +43,13 @@ import YmTabsBody from './tabs-body'
 import YmTabsHead from './tabs-head'
 import YmTabsItem from './tabs-item'
 import YmTabsPane from './tabs-pane'
+import db from './db'
+
+console.log(db)
+
+function ajax (parentId = 0) {
+  return db.filter(item => item.parent_id === parentId)
+}
 
 export default {
   name: "demo",
@@ -70,49 +77,7 @@ export default {
   },
   data () {
     return {
-      source: [
-        {
-          name: '山东',
-          children: [
-            {
-              name: '济南',
-              children: [
-                { name: '历城' },
-                { name: '历下' },
-                { name: '高新' },
-                { name: '天桥' },
-                { name: '市中' },
-              ]
-            },
-            {
-              name: '青岛',
-              children: [
-                { name: '黄岛' },
-                { name: '市南' },
-              ]
-            },
-            { name: '泰安' },
-          ]
-        },
-        {
-          name: '浙江',
-          children: [
-            {
-              name: '杭州',
-              children: [
-                { name: '西湖' },
-                { name: '上城' },
-                { name: '下城' },
-                { name: '滨江' },
-                { name: '萧山' },
-              ]
-            },
-            { name: '嘉兴' },
-            { name: '湖州' },
-          ]
-        },
-        { name: '北京' },
-      ],
+      source: ajax(),
       selected: []
     }
   }
