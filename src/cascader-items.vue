@@ -5,9 +5,9 @@
         v-for="item in items"
         @click="onClickLabel(item)"
         class="ym-cascader-item__left-label">
-        {{ item.name }}
+        <span class="ym-cascader-item__left-label__name">{{ item.name }}</span>
 
-        <ym-icon v-if="item.children" name="right"/>
+        <ym-icon v-if="rightArrowVisible(item)" name="right"/>
       </div>
     </div>
 
@@ -19,6 +19,7 @@
         :items="rightItems"
         :selected="selected"
         :height="height"
+        :load-data="loadData"
         @update:selected="onUpdateSelected"
       />
     </div>
@@ -48,6 +49,9 @@ export default {
       type: Number,
       default: 0
     },
+    loadData: {
+      type: Function,
+    }
   },
   data () {
     return {
@@ -63,9 +67,12 @@ export default {
         }
       }
       return null
-    }
+    },
   },
   methods: {
+    rightArrowVisible (item) {
+      return this.loadData ? !item.isLeaf : item.children
+    },
     onClickLabel (item) {
       const { selected, level } = this
       let copy = [...selected]
@@ -86,21 +93,31 @@ export default {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  min-height: 111px;
+  height: 180px;
   max-height: 180px;
 
   &__left {
+    overflow: auto;
     height: 100%;
     padding: .3em 0;
-    overflow: auto;
 
     &-label {
-      padding: .3em 1em;
+      padding: .5em 1em;
       display: flex;
       align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        background: $grey;
+      }
+
+      .ym-cascader-item__left-label__name {
+        margin-right: .3em;
+        user-select: none;
+      }
 
       > .ym-icon {
-        margin-left: .25em;
+        margin-left: auto;
         transform: scale(0.75);
       }
     }
@@ -109,7 +126,6 @@ export default {
   &__right {
     height: 100%;
     border-left: 1px solid $border-color-light;
-    overflow: auto;
   }
 }
 </style>

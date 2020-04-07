@@ -12,6 +12,7 @@
         :selected="selected"
         :items="source"
         :height="popoverHeight"
+        :load-data="loadData"
         @update:selected="onUpdateSelected"
         class="ym-cascader__popover"/>
     </div>
@@ -41,7 +42,7 @@ export default {
   },
   data () {
     return {
-      popoverVisible: true,
+      popoverVisible: false,
     }
   },
   computed: {
@@ -89,7 +90,9 @@ export default {
         toUpdate.children = res
         this.$emit('update:source', copy)
       }
-      this.loadData(lastItem, updateSource)
+      if (!lastItem.isLeaf) {
+        this.loadData && this.loadData(lastItem, updateSource)
+      }
     }
   }
 }
@@ -116,6 +119,7 @@ export default {
     background: #fff;
     display: flex;
     @extend .box-shadow;
+    z-index: 999;
     &-label {
       white-space: nowrap;
     }

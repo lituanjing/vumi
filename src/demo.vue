@@ -12,12 +12,22 @@
 
           <ym-cascader
             :source.sync="source"
+            :selected.sync="selected"/>
+
+          <ym-cascader
+            :source.sync="source1"
             :selected.sync="selected"
-            :load-data="loadData"
-            @update:selected="xxx"/>
+            :load-data="loadData"/>
 
           <ym-button> bottom 按钮</ym-button>
 
+          <div style="margin-top: 20px;">
+            {{ source1 }}
+          </div>
+
+          <div style="margin-top: 20px;">
+            {{ source }}
+          </div>
         </ym-content>
         <ym-footer class="footer">footer</ym-footer>
       </ym-layout>
@@ -51,7 +61,10 @@ import db from './db'
 function ajax (parentId = 0) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const result = db.filter(item => item.parent_id === parentId)
+      let result = db.filter(item => item.parent_id === parentId)
+      result.forEach(node => {
+        node.isLeaf = db.filter(item => item.parent_id === node.id).length <= 0;
+      })
       resolve(result)
     }, 30)
   })
@@ -84,12 +97,57 @@ export default {
   data () {
     return {
       source: [],
+      source1: [],
       selected: []
     }
   },
   created () {
+    this.source = [
+      {
+        name: '山东',
+        children: [
+          {
+            name: '济南',
+            children: [
+              { name: '历城' },
+              { name: '历下' },
+              { name: '高新' },
+              { name: '天桥' },
+              { name: '市中' },
+            ]
+          },
+          {
+            name: '青岛',
+            children: [
+              { name: '黄岛' },
+              { name: '市南' },
+            ]
+          },
+          { name: '泰安' },
+        ]
+      },
+      {
+        name: '浙江',
+        children: [
+          {
+            name: '杭州',
+            children: [
+              { name: '西湖' },
+              { name: '上城' },
+              { name: '下城' },
+              { name: '滨江' },
+              { name: '萧山' },
+            ]
+          },
+          { name: '嘉兴' },
+          { name: '湖州' },
+        ]
+      },
+      { name: '北京' },
+    ]
+
     ajax(0).then(res => {
-      this.source = res
+      this.source1 = res
     })
   },
   methods: {
