@@ -7,7 +7,14 @@
         class="ym-cascader-item__left-label">
         <span class="ym-cascader-item__left-label__name">{{ item.name }}</span>
 
-        <ym-icon v-if="rightArrowVisible(item)" name="right"/>
+        <span class="ym-cascader-item__icons">
+          <template v-if="item.name === loadingItem.name">
+            <ym-icon class="ym-cascader-item__icon-loading" name="loading"/>
+          </template>
+          <template v-else>
+            <ym-icon v-if="rightArrowVisible(item)" name="right"/>
+          </template>
+        </span>
       </div>
     </div>
 
@@ -20,6 +27,7 @@
         :selected="selected"
         :height="height"
         :load-data="loadData"
+        :loading-item="loadingItem"
         @update:selected="onUpdateSelected"
       />
     </div>
@@ -51,6 +59,10 @@ export default {
     },
     loadData: {
       type: Function,
+    },
+    loadingItem: {
+      type: Object,
+      default: () => ({})
     }
   },
   data () {
@@ -117,9 +129,12 @@ export default {
         user-select: none;
       }
 
-      > .ym-icon {
+      > .ym-cascader-item__icons {
         margin-left: auto;
-        transform: scale(0.75);
+        transform: scale(0.7);
+        .ym-cascader-item__icon-loading {
+          animation: spin .8s linear infinite;
+        }
       }
     }
   }
