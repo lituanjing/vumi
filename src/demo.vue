@@ -102,7 +102,7 @@ export default {
     }
   },
   created () {
-    removeListener()
+    // removeListener()
     this.source = [
       {
         name: '山东',

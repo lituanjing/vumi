@@ -121,7 +121,6 @@ export default {
 .ym-cascader {
   position: relative;
   display: inline-block;
-  border: 1px solid red;
 
   &__trigger {
     height: $input-height;
@@ -139,8 +138,8 @@ export default {
     margin-top: 8px;
     background: #fff;
     display: flex;
+    z-index: 1;
     @extend .box-shadow;
-    z-index: 999;
     &-label {
       white-space: nowrap;
     }
