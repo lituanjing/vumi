@@ -55,10 +55,12 @@ export default {
   },
   computed: {
     rightItems () {
-      const { selected, level } = this
-      let currentSelected = selected[level]
-      if (currentSelected && currentSelected.children) {
-        return currentSelected.children
+      const { selected, level, items } = this
+      if (selected &&selected[level]) {
+        let currentSelected = items.filter(item => item.name === selected[level].name)[0]
+        if (currentSelected && currentSelected.children) {
+          return currentSelected.children
+        }
       }
       return null
     }
