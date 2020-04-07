@@ -56,6 +56,7 @@ import YmTabsHead from './tabs-head'
 import YmTabsItem from './tabs-item'
 import YmTabsPane from './tabs-pane'
 import db from './db'
+import { removeListener } from './click-outside'
 
 function ajax (parentId = 0) {
   return new Promise((resolve, reject) => {
@@ -101,6 +102,7 @@ export default {
     }
   },
   created () {
+    removeListener()
     this.source = [
       {
         name: '山东',
@@ -163,7 +165,7 @@ export default {
         updateSource(res)
       })
     },
-  }
+  },
 }
 </script>
 

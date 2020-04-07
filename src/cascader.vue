@@ -1,5 +1,5 @@
 <template>
-  <div ref="cascader" class="ym-cascader">
+  <div ref="cascader" class="ym-cascader" v-click-outside="close">
     <div
       @click="toggle"
       class="ym-cascader__trigger">
@@ -21,11 +21,15 @@
 
 <script>
 import CascaderItems from './cascader-items'
+import ClickOutside from './click-outside'
 
 export default {
   name: "YmCascader",
   components: {
     CascaderItems,
+  },
+  directives: {
+    ClickOutside
   },
   props: {
     source: {
@@ -51,22 +55,12 @@ export default {
     }
   },
   methods: {
-    onClickDocument (e) {
-      const { cascader } = this.$refs
-      const { target } = e
-      if (cascader === target || cascader.contains(target)) { return }
-      this.close()
-    },
     open () {
       this.popoverVisible = true
-      this.$nextTick(() => {
-        document.addEventListener('click', this.onClickDocument)
-      })
     },
     close () {
       console.log('close')
       this.popoverVisible = false
-      document.removeEventListener('click', this.onClickDocument)
     },
     toggle () {
       if (this.popoverVisible) {
