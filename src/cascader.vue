@@ -1,7 +1,7 @@
 <template>
-  <div class="ym-cascader">
+  <div ref="cascader" class="ym-cascader">
     <div
-      @click="popoverVisible=!popoverVisible"
+      @click="toggle"
       class="ym-cascader__trigger">
       {{ result || '&nbsp;' }}
     </div>
@@ -51,6 +51,30 @@ export default {
     }
   },
   methods: {
+    onClickDocument (e) {
+      const { cascader } = this.$refs
+      const { target } = e
+      if (cascader === target || cascader.contains(target)) { return }
+      this.close()
+    },
+    open () {
+      this.popoverVisible = true
+      this.$nextTick(() => {
+        document.addEventListener('click', this.onClickDocument)
+      })
+    },
+    close () {
+      console.log('close')
+      this.popoverVisible = false
+      document.removeEventListener('click', this.onClickDocument)
+    },
+    toggle () {
+      if (this.popoverVisible) {
+        this.close()
+      } else {
+        this.open()
+      }
+    },
     onUpdateSelected (newSelected) {
       this.$emit('update:selected', newSelected)
       const lastItem = newSelected[newSelected.length - 1]
@@ -102,6 +126,9 @@ export default {
 @import "var";
 .ym-cascader {
   position: relative;
+  display: inline-block;
+  border: 1px solid red;
+
   &__trigger {
     height: $input-height;
     display: inline-flex;

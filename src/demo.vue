@@ -6,9 +6,6 @@
         <ym-header class="header">header</ym-header>
         <ym-content style="padding: 24px;">
           <ym-button @click="selected=[]"> 清空</ym-button>
-          {{ selected && selected[0] && selected[0].name || '空' }}
-          {{ selected && selected[1] && selected[1].name || '空' }}
-          {{ selected && selected[2] && selected[2].name || '空' }}
 
           <ym-cascader
             :source.sync="source"
@@ -19,15 +16,17 @@
             :selected.sync="selected"
             :load-data="loadData"/>
 
+          <ym-popover>
+            <template>
+              <ym-button>点我</ym-button>
+            </template>
+            <template slot="content">
+              弹出内容
+            </template>
+          </ym-popover>
+
+          <div></div>
           <ym-button> bottom 按钮</ym-button>
-
-          <div style="margin-top: 20px;">
-            {{ source1 }}
-          </div>
-
-          <div style="margin-top: 20px;">
-            {{ source }}
-          </div>
         </ym-content>
         <ym-footer class="footer">footer</ym-footer>
       </ym-layout>
