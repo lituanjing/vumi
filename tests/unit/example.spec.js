@@ -1,13 +1,9 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import YmButton from '@/button.vue'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
-    })
-    expect(wrapper.text()).to.include(msg)
+describe('YmButton', () => {
+  it('is ok', () => {
+    expect(1).to.eq(1)
   })
 })
