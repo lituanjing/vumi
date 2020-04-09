@@ -1,9 +1,8 @@
 import chai, { expect } from 'chai'
-import { shallowMount, mount } from '@vue/test-utils'
-import Button from '@/button.vue'
-import Vue from 'vue'
 import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
+import { shallowMount, mount } from '@vue/test-utils'
+import Button from '@/button.vue'
 chai.use(sinonChai)
 
 describe('button.vue', () => {
@@ -28,7 +27,6 @@ describe('button.vue', () => {
     })
     const vm = wrapper.vm
     const useElements = vm.$el.querySelectorAll('use')
-    console.log(JSON.stringify())
     expect(useElements.length).to.equal(1)
     expect(useElements[0].getAttribute('xlink:href')).to.equal('#icon-loading')
     vm.$destroy()
@@ -36,12 +34,12 @@ describe('button.vue', () => {
   xit('icon 默认的 order 是 1', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
-    const Constructor = Vue.extend(Button)
-    const vm = new Constructor({
+    const wrapper = mount(Button, {
       propsData: {
         icon: 'settings',
       }
-    }).$mount(div)
+    })
+    const vm = wrapper.vm
     const icon = vm.$el.querySelector('svg')
     expect(getComputedStyle(icon).order).to.eq('1')
     vm.$el.remove()
@@ -50,13 +48,13 @@ describe('button.vue', () => {
   xit('设置 iconPosition 可以改变 order', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
-    const Constructor = Vue.extend(Button)
-    const vm = new Constructor({
+    const wrapper = mount(Button, {
       propsData: {
         icon: 'settings',
         iconPosition: 'right'
       }
-    }).$mount(div)
+    })
+    const vm = wrapper.vm
     const icon = vm.$el.querySelector('svg')
     expect(getComputedStyle(icon).order).to.eq('2')
     vm.$el.remove()
